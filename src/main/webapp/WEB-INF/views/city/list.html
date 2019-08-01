@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> City </title>
+</head>
+<body>
+<h1> Board City </h1>
+<hr/>
+<p>
+    <a href="/city-create">Create City</a>
+</p>
+<form>
+    <fieldset>
+        <legend> City List </legend>
+        <table border="1">
+            <tr>
+                <td>#</td>
+                <td> Thành Phố </td>
+                <td> Quốc Gia </td>
+                <td></td>
+            </tr>
+            <th:block th:each="city : ${cities}">
+                <tr>
+                    <td></td>
+                    <td th:text="${city.name}"></td>
+                    <td th:text="${city.country.name}"></td>
+                    <td><a th:href="@{/city-edit/__${city.id}__}"> Chỉnh sửa</a> |
+                        <a th:href="@{/city-delete/__${city.id}__}">Xoá </a></td>
+                </tr>
+
+            </th:block>
+        </table>
+    </fieldset>
+</form>
+</body>
+</html>

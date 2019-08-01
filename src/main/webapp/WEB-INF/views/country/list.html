@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Country </title>
+</head>
+<body>
+<h1> Board Country </h1>
+<hr/>
+<p>
+    <a href="/country-create">Create Country</a>
+</p>
+<form>
+    <fieldset>
+        <legend> Country List </legend>
+        <table border="1">
+            <tr>
+                <td> Country </td>
+                <td></td>
+            </tr>
+            <th:block th:each="country : ${countries}">
+                <tr>
+                    <td th:text="${country.name}"></td>
+                    <td><a th:href="@{/country-edit/__${country.id}__}">Edit</a> |
+                        <a th:href="@{/country-delete/__${country.id}__}">Delete</a></td>
+
+                </tr>
+            </th:block>
+        </table>
+    </fieldset>
+</form>
+</body>
+</html>
